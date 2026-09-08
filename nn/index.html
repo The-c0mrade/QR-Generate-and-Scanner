@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section id="scannerTopCard" class="card scanner-top-card">
+        <div class="scanner-top-header">
+          <h2>QR / Barcode Scanner</h2>
+          <button type="button" id="scanBtn" class="scan-btn">Open Scanner</button>
+        </div>
+
+        <div id="scannerPanel" class="scanner-panel hidden">
+          <div class="scanner-header">
+            <h3>Scanner</h3>
+            <button type="button" id="closeScannerBtn" class="mini-btn">Close</button>
+          </div>
+
+          <video id="scanVideo" autoplay playsinline muted></video>
+
+          <div class="scanner-actions">
+            <button type="button" id="startScanBtn" class="primary-btn small-btn">Start Camera</button>
+            <label class="secondary-btn small-btn upload-scan-btn">
+              Upload Image
+              <input type="file" id="scanFileInput" accept="image/*" />
+            </label>
+          </div>
+
+          <p id="scanStatus" class="scan-status">Camera is ready when you start scanning.</p>
+
+          <div id="scanResultBox" class="scan-result-box hidden">
+            <label>Scanned Data</label>
+            <textarea id="scanResult" readonly></textarea>
+            <div class="scan-result-actions">
+              <button type="button" id="copyScanBtn" class="secondary-btn small-btn">Copy</button>
+              <button type="button" id="downloadScanBtn" class="secondary-btn small-btn">Download</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="generatorSection" class="card form-card">
+        <div class="title-row">
+          <h1>QR Creator</h1>
+          <span class="badge">Simple</span>
+        </div>
+
+        <label for="qrText">Enter any text, number, or note</label>
+        <textarea id="qrText" placeholder="Example: Hello 123, customer ID 24, office address"></textarea>
+
+        <div class="link-box">
+          <label>Share URLs</label>
+          <div class="url-stack">
+            <div class="url-row">
+              <span class="url-index">URL 1</span>
+              <input type="url" id="teraboxUrl" placeholder="Paste URL 1 here" />
+            </div>
+            <div class="url-row">
+              <span class="url-index">URL 2</span>
+              <input type="url" id="teraboxUrl2" placeholder="Paste URL 2 here" />
+            </div>
+            <div class="url-row">
+              <span class="url-index">URL 3</span>
+              <input type="url" id="teraboxUrl3" placeholder="Paste URL 3 here" />
+            </div>
+            <div class="url-row">
+              <span class="url-index">URL 4</span>
+              <input type="url" id="teraboxUrl4" placeholder="Paste URL 4 here" />
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="generateBtn" class="primary-btn">Generate QR</button>
+          <button type="button" id="downloadBtn" class="secondary-btn">Download PNG</button>
+        </div>
+
+        <p id="status" class="status">Ready to create your QR code.</p>
+      </section>
+
+      <section id="qrSection" class="card qr-card">
+        <h2>Generated QR</h2>
+        <div class="qr-wrapper">
+          <canvas id="qrCanvas" width="320" height="320" aria-label="Generated QR code"></canvas>
+        </div>
+        <div id="qrGallery" class="qr-gallery" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
