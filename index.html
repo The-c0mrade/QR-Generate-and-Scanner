@@ -10,13 +10,7 @@
   </head>
   <body>
     <main class="container">
-      <section id="scannerTopCard" class="card scanner-top-card">
-        <div class="scanner-top-header">
-          <h2>QR / Barcode Scanner</h2>
-          <button type="button" id="scanBtn" class="scan-btn">Open Scanner</button>
-        </div>
-
-        <div id="scannerPanel" class="scanner-panel hidden">
+      <div id="scannerPanel" class="scanner-panel hidden">
           <div class="scanner-header">
             <h3>Scanner</h3>
             <button type="button" id="closeScannerBtn" class="mini-btn">Close</button>
@@ -48,7 +42,10 @@
       <section id="generatorSection" class="card form-card">
         <div class="title-row">
           <h1>QR Creator</h1>
-          <span class="badge">Simple</span>
+          <div class="title-actions">
+            <span class="badge">Simple</span>
+            <button type="button" id="scanBtn" class="scan-btn">Open Scanner</button>
+          </div>
         </div>
 
         <label for="qrText">Enter any text, number, or note</label>
